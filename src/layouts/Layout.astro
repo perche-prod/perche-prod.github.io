@@ -8,10 +8,12 @@ import Drawer from "../components/Drawer.astro";
 <!DOCTYPE html>
 <html lang="fr" data-theme="perche-light" class="h-full">
     <Head title={Astro.props.title} />
-    <body class="p-2 md:p-4 min-h-full flex flex-col">
+    <body class="p-2 md:p-4 min-h-full flex flex-col bg-primary text-primary-content">
         <Drawer>
             <Navbar />
-            <slot />
+            <div class="flex flex-col gap-12">
+                <slot />
+            </div>
         </Drawer>
     </body>
 </html>
