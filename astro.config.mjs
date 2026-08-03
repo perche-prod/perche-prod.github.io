@@ -9,7 +9,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   redirects: {
-    "/apply": "https://tally.so/r/9qYXlE",
+    "/join": "https://tally.so/r/9qYXlE",
     "/recrutement": "https://tally.so/r/9qYXlE"
   },
   integrations: [icon(), mdx()]
