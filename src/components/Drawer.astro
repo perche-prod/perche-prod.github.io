@@ -1,20 +1,56 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import Navigation from "./Navigation.astro";
-
 import madeInImg from "../assets/madein.png";
 ---
 
 <div class="drawer flex-1">
-  <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex flex-col">
-   <slot />
-  </div>
-  <div class="drawer-side h-full">
-    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 min-h-full w-80 p-4 md:flex text-lg font-[Poppins] font-black">
-      <Image class="h-auto w-full mb-6" src={madeInImg} alt="La Perche Logo" height={128}/>
-      <Navigation />
-    </ul>
-  </div>
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col">
+        <slot />
+    </div>
+    <div class="drawer-side z-50">
+        <label
+            for="my-drawer-2"
+            aria-label="Fermer le menu"
+            class="drawer-overlay bg-neutral/40 backdrop-blur-xs"
+        ></label>
+        <div class="menu bg-base-100 text-base-content min-h-full w-80 p-6 flex flex-col justify-between border-r border-base-300">
+            <div>
+                <div class="flex items-center justify-between pb-6 mb-6 border-b border-base-300">
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight text-accent">
+                            LA PERCHE
+                        </span>
+                        <span class="text-xs uppercase tracking-wider font-semibold text-base-content/60">
+                            Cinéma Étudiant • 1901
+                        </span>
+                    </div>
+                    <label
+                        for="my-drawer-2"
+                        class="btn btn-ghost btn-circle btn-sm"
+                    >
+                        ✕
+                    </label>
+                </div>
+
+                <ul class="flex flex-col gap-2 p-0 text-base font-semibold">
+                    <Navigation />
+                </ul>
+            </div>
+
+            <div class="pt-6 border-t border-base-300 flex flex-col items-center gap-4">
+                <Image
+                    class="h-auto w-44 opacity-80"
+                    src={madeInImg}
+                    alt="Made in France / Indépendant"
+                    height={64}
+                />
+                <p class="text-xs text-center text-base-content/60 font-medium">
+                    Association audiovisuelle étudiante régie par la loi 1901.
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

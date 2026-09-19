@@ -1,36 +1,60 @@
 ---
-import { Icon } from "astro-icon/components"
+import { Icon } from "astro-icon/components";
 ---
 
-<section class="hero mt-12 md:mt-16">
-    <div class="max-w-4xl mx-auto text-center">
-        <div class="mb-6">
-            <h1 class="text-4xl md:text-5xl font-extrabold">Et si on</h1>
-
-            <div class="text-rotate my-4 font-bold leading-[6] duration-4000 px-1">
-                <div class="justify-items-center">
-                    <span class="title text-5xl md:text-7xl font-extrabold text-secondary-content">jouait</span>
-                    <span class="title text-5xl md:text-7xl font-extrabold text-error-content">créait</span>
-                    <span class="title text-5xl md:text-7xl font-extrabold text-success-content">filmait</span>
-                    <span class="title text-5xl md:text-7xl font-extrabold text-warning-content">imaginait</span>
-                </div>
-            </div>
-
-            <h2 class="text-4xl md:text-5xl font-extrabold">ensemble ?</h2>
+<section id="top" class="relative pt-6 md:pt-12 pb-4">
+    <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+        <!-- Top badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary text-secondary-content text-xs sm:text-sm font-bold uppercase tracking-wider mb-6 border border-secondary-content/15">
+            <Icon
+                name="iconmind:film-roll-outline-thin"
+                class="w-4 h-4 text-accent"
+            />
+            <span>Association de cinéma étudiant • Loi 1901</span>
         </div>
 
-        <p class="max-w-2xl mx-auto py-4 text-base md:text-lg">Rejoignez LaPerche, une super asso de cinéma vraiment bien (super ultra plus).</p>
+        <!-- Main headline -->
+        <div class="space-y-2 mb-6">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-accent leading-tight">
+                Et si on{" "}
+                <span class="relative inline-block text-secondary-content underline decoration-secondary decoration-wavy decoration-2 underline-offset-8">
+                    tournait
+                </span>{" "}
+                un film ensemble ?
+            </h1>
+        </div>
 
-        <div class="flex flex-col md:flex-row justify-center gap-4 mt-4">
-            <a class="btn btn-lg btn-primary flex items-center gap-2">
-                Découvrir l'asso
-                <Icon name="mingcute:arrow-right-fill" />
+        <!-- Subtitle -->
+        <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-base-content/85 font-medium leading-relaxed mb-8">
+            <strong class="font-bold text-accent">La Perche</strong> est un
+            collectif jeune et passionné dédié à la création audiovisuelle :
+            écriture, réalisation, cadrage, son, jeu d'acteur et montage de
+            courts-métrages originaux.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto mb-10">
+            <a
+                href="/#creations"
+                class="btn btn-lg bg-accent text-accent-content hover:bg-accent/90 border-0 flex items-center justify-center gap-2.5 w-full sm:w-auto px-6"
+            >
+                <Icon
+                    name="iconmind:video-outline-thin"
+                    class="w-5 h-5 text-secondary"
+                />
+                <span>Découvrir nos projets</span>
+                <Icon
+                    name="iconmind:arrow-right-outline-thin"
+                    class="w-4 h-4 ml-1"
+                />
             </a>
-            <a class="btn btn-lg btn-secondary flex items-center gap-2" href="/join">
-                Nous rejoindre
-                <Icon name="mingcute:heart-hand-fill" />
+            <a
+                href="/join"
+                class="btn btn-lg bg-secondary text-secondary-content hover:bg-secondary/80 border border-secondary-content/20 flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 font-bold"
+            >
+                <Icon name="iconmind:user-heart-outline-thin" class="w-5 h-5" />
+                <span>Rejoindre l'équipe</span>
             </a>
         </div>
     </div>
-
 </section>

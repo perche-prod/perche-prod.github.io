@@ -1,18 +1,103 @@
 ---
-import { Icon } from "astro-icon/components"
+import { Icon } from "astro-icon/components";
 ---
 
-<div class="hero bg-secondary text-secondary-content mt-2 md:mt-4 p-2 rounded-box h-full">
-  <div class="hero-content flex-col w-full">
-      <div class="grid grid-cols-1 md:grid-cols-2">
-        <div>
-          <h2 class="text-4xl font-bold">Qui sommes-nous ?</h2>
-          <p class="py-6">
-            LaPerche, c'est l'histoire d'un petit groupe d'étudiants tombés amoureux du 7ème art après l'avoir étudié pendant 3 ans.
-            <br />
-            Aujourd'hui, cette joyeuse troupe est devenue une association, mais porte le même projet : <strong>faire des films fun, ensemble</strong>.
-          </p>
+<section id="about" class="scroll-mt-24">
+    <div class="bg-secondary text-secondary-content rounded-3xl p-6 md:p-10 border border-secondary-content/15">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <!-- Left column: Story & description -->
+            <div class="lg:col-span-6 space-y-5">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-base-100 text-secondary-content text-xs font-bold uppercase tracking-wider border border-secondary-content/15">
+                    <Icon
+                        name="iconmind:film-roll-outline-thin"
+                        class="w-4 h-4 text-accent"
+                    />
+                    <span>Notre Histoire</span>
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-secondary-content">
+                    Une bande d'étudiants, une passion : le 7
+                    <sup class="text-sm top-[-1.3em]">ème</sup> art.
+                </h2>
+
+                <div class="space-y-4 text-secondary-content/90 text-base md:text-lg leading-relaxed">
+                    <p>
+                        <strong class="text-accent font-bold">La Perche</strong>
+                        , c'est l'histoire d'un groupe d'étudiants tombés
+                        amoureux du cinéma après l'avoir étudié et pratiqué
+                        ensemble pendant plusieurs années.
+                    </p>
+                    <p>
+                        Aujourd'hui structurée en association Loi 1901, notre
+                        troupe s'agrandit pour concrétiser des projets toujours
+                        plus ambitieux :{" "}
+                        <strong>
+                            courts-métrages, mini-séries, fictions et formats
+                            expérimentaux
+                        </strong>
+                        .
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right column: Pillars / Cards -->
+            <div class="lg:col-span-6 grid grid-cols-1 gap-4">
+                <div class="card-cinematic p-5 bg-base-100 flex items-start gap-4">
+                    <div class="p-3 rounded-2xl bg-secondary/40 text-accent flex-shrink-0">
+                        <Icon
+                            name="iconmind:film-roll-outline-thin"
+                            class="w-6 h-6"
+                        />
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-accent mb-1">
+                            Écriture & Conception
+                        </h3>
+                        <p class="text-sm text-base-content/75 leading-relaxed">
+                            Brainstorming, scénarios, découpage technique et
+                            préparation rigoureuse de chaque tournage.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-cinematic p-5 bg-base-100 flex items-start gap-4">
+                    <div class="p-3 rounded-2xl bg-secondary/40 text-accent flex-shrink-0">
+                        <Icon
+                            name="iconmind:camera-outline-thin"
+                            class="w-6 h-6"
+                        />
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-accent mb-1">
+                            Tournage & Réalisation
+                        </h3>
+                        <p class="text-sm text-base-content/75 leading-relaxed">
+                            Mise en scène, direction d'acteurs, travail soigné
+                            de la lumière et prise de son avec notre fameuse
+                            perche.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card-cinematic p-5 bg-base-100 flex items-start gap-4">
+                    <div class="p-3 rounded-2xl bg-secondary/40 text-accent flex-shrink-0">
+                        <Icon
+                            name="iconmind:video-outline-thin"
+                            class="w-6 h-6"
+                        />
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-accent mb-1">
+                            Post-production & Diffusion
+                        </h3>
+                        <p class="text-sm text-base-content/75 leading-relaxed">
+                            Montage, mixage audio, étalonnage couleur et
+                            diffusion auprès du public, festivals et
+                            plateformes.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-</div>
+</section>

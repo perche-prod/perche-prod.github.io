@@ -1,14 +1,35 @@
 ---
-const { title } = Astro.props;
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const {
+    title = "La Perche - Collectif & Association de Cinéma Étudiant",
+    description = "La Perche est une association étudiante de cinéma (Loi 1901) dédiée à la réalisation de courts-métrages, fictions, séries et projets audiovisuels originaux.",
+} = Astro.props;
 ---
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="icon" type="image/png" href="/logo.png">
-    <meta name="description" content="La Perche est une entreprise spécialisée dans la vente de produits de la mer. Nous proposons une large gamme de produits frais et de qualité, issus de la pêche durable. Découvrez notre sélection de poissons, crustacés et coquillages, ainsi que nos recettes pour les cuisiner.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FBDCA0" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/logo.png" />
+
+    <link rel="icon" type="image/png" href="/logo.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Poppins:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&display=swap"
+        rel="stylesheet"
+    />
 </head>

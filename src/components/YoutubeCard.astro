@@ -1,73 +1,126 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
-	id: string;
-	title: string;
-	description: string;
+    id: string;
+    title: string;
+    description: string;
+    tag?: string;
+    duration?: string;
 }
 
-const { id, title, description } = Astro.props;
+const {
+    id,
+    title,
+    description,
+    tag = "Production La Perche",
+    duration = "Vidéo",
+} = Astro.props;
 ---
 
-<div class="card bg-base-100 border-2 border-secondary-content overflow-hidden youtube-card-container">
-	<div class="relative aspect-video group">
-		<div
-			id={`youtube-placeholder-${id}`}
-			class="absolute inset-0 flex flex-col items-center justify-center bg-neutral text-neutral-content p-4 text-center transition-opacity youtube-placeholder"
-		>
-			<div class="mb-4">
-				<p class="text-sm mb-2">
-					En cliquant sur "Lire la vidéo", vous acceptez l'utilisation de cookies par YouTube.
-				</p>
-				<button
-					class="btn btn-primary btn-sm accept-youtube-cookies"
-					data-video-id={id}
-				>
-					Lire la vidéo
-				</button>
-			</div>
-		</div>
-		<iframe
-			id={`youtube-iframe-${id}`}
-			class="absolute inset-0 w-full h-full hidden youtube-iframe"
-			data-src={`https://www.youtube.com/embed/${id}`}
-			frameborder="0"
-			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen
-		></iframe>
-	</div>
-	<div class="card-body p-4">
-		<h3 class="card-title text-lg">{title}</h3>
-		<p class="text-sm opacity-80">{description}</p>
-	</div>
+<div class="card-cinematic overflow-hidden flex flex-col h-full bg-base-200 border border-base-300 rounded-2xl md:rounded-3xl transition-all group">
+    <!-- Video container -->
+    <div class="relative aspect-video bg-neutral overflow-hidden">
+        <!-- Privacy / Consent Poster Overlay -->
+        <div
+            id={`youtube-placeholder-${id}`}
+            class="youtube-placeholder absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-t from-neutral via-neutral/95 to-neutral text-neutral-content z-10 transition-opacity duration-300"
+        >
+            <div class="w-14 h-14 rounded-full bg-secondary text-secondary-content flex items-center justify-center group-hover:scale-110 transition-transform mb-3">
+                <Icon
+                    name="iconmind:monitor-play-outline-thin"
+                    class="w-7 h-7 ml-0.5"
+                />
+            </div>
+
+            <span class="font-bold text-base text-neutral-content mb-1">
+                Visionner la vidéo
+            </span>
+            <p class="text-xs text-neutral-content/80 max-w-xs mb-4">
+                Lecture hébergée sur YouTube. En lançant la vidéo, vous acceptez
+                les cookies de YouTube.
+            </p>
+
+            <button
+                type="button"
+                class="accept-youtube-cookies btn btn-sm bg-secondary text-secondary-content hover:bg-secondary/90 border-0 font-bold px-4 rounded-xl flex items-center gap-1.5"
+                data-video-id={id}
+            >
+                <span>Lancer la lecture</span>
+                <Icon
+                    name="iconmind:arrow-right-outline-thin"
+                    class="w-3.5 h-3.5"
+                />
+            </button>
+        </div>
+
+        <!-- YouTube iframe -->
+        <iframe
+            id={`youtube-iframe-${id}`}
+            class="youtube-iframe absolute inset-0 w-full h-full hidden"
+            data-src={`https://www.youtube.com/embed/${id}?autoplay=1`}
+            title={title}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+        ></iframe>
+    </div>
+
+    <!-- Card Body -->
+    <div class="p-5 sm:p-6 flex flex-col flex-1 justify-between bg-base-200 text-left">
+        <div>
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+                <span class="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-secondary/40 text-secondary-content">
+                    <Icon
+                        name="iconmind:film-roll-outline-thin"
+                        class="w-3.5 h-3.5"
+                    />
+                    {tag}
+                </span>
+                <span class="text-xs font-semibold text-base-content/60">
+                    {duration}
+                </span>
+            </div>
+
+            <h3 class="font-bold text-lg text-accent leading-snug mb-2 group-hover:text-secondary-content transition-colors">
+                {title}
+            </h3>
+            <p class="text-sm text-base-content/75 line-clamp-2 leading-relaxed">
+                {description}
+            </p>
+        </div>
+    </div>
 </div>
 
 <script>
-	const STORAGE_KEY = 'youtube-consent-accepted';
+    const STORAGE_KEY = "youtube-consent-accepted";
 
-	function revealVideos() {
-		const placeholders = document.querySelectorAll('.youtube-placeholder');
-		const iframes = document.querySelectorAll('.youtube-iframe');
-		
-		placeholders.forEach(p => (p as HTMLElement).style.display = 'none');
-		iframes.forEach(iframe => {
-			const f = iframe as HTMLIFrameElement;
-			if (f.classList.contains('hidden')) {
-				f.src = f.dataset.src || '';
-				f.classList.remove('hidden');
-			}
-		});
-	}
+    function revealVideos() {
+        const placeholders = document.querySelectorAll(".youtube-placeholder");
+        const iframes = document.querySelectorAll(".youtube-iframe");
 
-	// Check on load
-	if (localStorage.getItem(STORAGE_KEY) === 'true') {
-		revealVideos();
-	}
+        placeholders.forEach(
+            (p) => ((p as HTMLElement).style.display = "none"),
+        );
+        iframes.forEach((iframe) => {
+            const f = iframe as HTMLIFrameElement;
+            if (f.classList.contains("hidden")) {
+                f.src = f.dataset.src || "";
+                f.classList.remove("hidden");
+            }
+        });
+    }
 
-	// Double check on each card click
-	document.querySelectorAll('.accept-youtube-cookies').forEach(button => {
-		button.addEventListener('click', () => {
-			localStorage.setItem(STORAGE_KEY, 'true');
-			revealVideos();
-		});
-	});
+    // Check on load
+    if (localStorage.getItem(STORAGE_KEY) === "true") {
+        revealVideos();
+    }
+
+    // Double check on click
+    document.querySelectorAll(".accept-youtube-cookies").forEach((button) => {
+        button.addEventListener("click", () => {
+            localStorage.setItem(STORAGE_KEY, "true");
+            revealVideos();
+        });
+    });
 </script>

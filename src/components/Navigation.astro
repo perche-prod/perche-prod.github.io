@@ -1,33 +1,36 @@
 ---
-const navItems = [
-  { icon: "mingcute:home-5-fill", label: "Accueil", href: "/" },
-  { icon: "mingcute:heart-hand-fill", label: "Nous rejoindre", href: "/join" }
-];
-
 import { Icon } from "astro-icon/components";
+
+const navItems = [
+    { icon: "iconmind:home-outline-thin", label: "Accueil", href: "/" },
+    {
+        icon: "iconmind:film-roll-outline-thin",
+        label: "Qui sommes-nous ?",
+        href: "/#about",
+    },
+    {
+        icon: "iconmind:video-outline-thin",
+        label: "Nos Projets",
+        href: "/#creations",
+    },
+    { icon: "iconmind:users-outline-thin", label: "L'Équipe", href: "/#team" },
+];
 ---
 
 {navItems.map((item) => (
-  <li>
-    {item.children ? (
-      <details>
-        <summary>
-            {item.icon && <Icon name={item.icon} />}
-            {item.label}</summary>
-        <ul>
-          {item.children.map((child) => (
-            <li><a href={child.href}>
-                {child.icon && <Icon name={child.icon} />}
-                {child.label}
-            </a></li>
-          ))}
-        </ul>
-      </details>
-    ) : (
-      <a href={item.href}>
-        {item.icon && <Icon name={item.icon} />}
-        {item.label}
-      </a>
-    )}
-  </li>
+    <li>
+        <a
+            href={item.href}
+            class={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-200 ${
+                item.highlight
+                    ? "bg-accent text-accent-content hover:bg-accent/90"
+                    : "hover:bg-secondary-content/10 text-secondary-content"
+            }`}
+        >
+            {item.icon && (
+                <Icon name={item.icon} class="w-5 h-5 flex-shrink-0" />
+            )}
+            <span>{item.label}</span>
+        </a>
+    </li>
 ))}

@@ -1,39 +1,63 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import Navigation from "./Navigation.astro";
 import logo from "../assets/laperche.png";
 ---
 
-<header class="space-y-4">
-    <div class="navbar p-0 bg-secondary text-secondary-content rounded-box z-10">
-        <div class="navbar-start">
-            <div class="flex-none lg:hidden ml-4">
-        <label for="my-drawer-2" aria-label="open sidebar" class="btn btn-square btn-secondary">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            class="inline-block h-6 w-6 stroke-current"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </label>
-      </div>
-            <Image class="hidden md:block ml-8 h-16 w-auto" src={logo} alt="La Perche Logo" height={128}/>
+<header class="sticky top-2 md:top-4 z-40 px-2 md:px-0">
+    <div class="navbar bg-secondary text-secondary-content border border-secondary-content/15 rounded-2xl md:rounded-3xl p-0 h-16 md:h-20 min-h-16 md:min-h-20 transition-all overflow-hidden">
+        <div class="navbar-start h-full flex items-center gap-3 pl-2 sm:pl-4">
+            <div class="flex-none lg:hidden">
+                <label
+                    for="my-drawer-2"
+                    aria-label="Ouvrir le menu"
+                    class="btn btn-ghost btn-sm btn-square text-secondary-content hover:bg-secondary-content/10"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        class="inline-block h-6 w-6 stroke-current"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1.5"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        ></path>
+                    </svg>
+                </label>
+            </div>
+
+            <a href="/" class="h-full py-0 my-0 flex items-center gap-2 group">
+                <Image
+                    class="h-full w-auto py-0 my-0 object-contain"
+                    src={logo}
+                    alt="La Perche Production"
+                    height={160}
+                />
+            </a>
         </div>
-        <div class="navbar-center">
-            <Image class="md:hidden ml-8 h-16 w-auto" src={logo} alt="La Perche Logo" height={128}/>
-            <ul class="menu menu-horizontal px-1 hidden md:flex text-lg font-[Poppins] font-black">
+
+        <div class="navbar-center hidden lg:flex h-full items-center">
+            <ul class="menu menu-horizontal gap-1 p-0 text-sm font-semibold">
                 <Navigation />
             </ul>
         </div>
-        <div class="navbar-end gap-2">
-           
+
+        <div class="navbar-end gap-2 pr-4 h-full flex items-center">
+            <a
+                href="/join"
+                class="btn btn-sm md:btn-md bg-accent text-accent-content hover:bg-accent/90 border-0 flex items-center gap-2 font-bold px-4"
+            >
+                <Icon
+                    name="iconmind:user-heart-outline-thin"
+                    class="w-4 h-4 md:w-5 md:h-5"
+                />
+                <span class="hidden sm:inline">Rejoindre l'asso</span>
+                <span class="sm:hidden">Rejoindre</span>
+            </a>
         </div>
     </div>
 </header>

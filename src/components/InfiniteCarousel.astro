@@ -1,97 +1,177 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
-import alexImg from '../assets/avatars/Alex.png';
-import eloImg from '../assets/avatars/Elo_contente.png';
-import funaImg from '../assets/avatars/Funa.png';
-import gabrielImg from '../assets/avatars/Gabriel.png';
-import leonaImg from '../assets/avatars/Leona.png';
-import thomasImg from '../assets/avatars/Thomas.png';
-import zamImg from '../assets/avatars/Zam.png';
+import alexImg from "../assets/avatars/Alex.png";
+import eloImg from "../assets/avatars/Elo_contente.png";
+import funaImg from "../assets/avatars/Funa.png";
+import gabrielImg from "../assets/avatars/Gabriel.png";
+import leonaImg from "../assets/avatars/Leona.png";
+import thomasImg from "../assets/avatars/Thomas.png";
+import zamImg from "../assets/avatars/Zam.png";
 
-// Hardcoded member data for easy editing
+// Hardcoded member data with roles
 const memberData = [
-  { name: "Alexandre", role: "Monteur", img: alexImg },
-  { name: "Élodie", role: "Co-présidente & scripte", img: eloImg },
-  { name: "Guilhem", role: "Co-président & ingé son", img: funaImg },
-  { name: "Gabriel", role: "Membre de l'équipe", img: gabrielImg },
-  { name: "Leona", role: "Membre de l'équipe", img: leonaImg },
-  { name: "Thomas", role: "Membre de l'équipe", img: thomasImg },
-  { name: "Zamuel", role: "Membre de l'équipe", img: zamImg },
+    {
+        name: "Alexandre",
+        role: "Montage & Post-prod",
+        img: alexImg,
+        specialty: "Monteur",
+    },
+    {
+        name: "Élodie",
+        role: "Co-présidente & Scripte",
+        img: eloImg,
+        specialty: "Scénario & Continuité",
+    },
+    {
+        name: "Guilhem",
+        role: "Co-président & Ingé Son",
+        img: funaImg,
+        specialty: "Prise de son & Mixage",
+    },
+    {
+        name: "Gabriel",
+        role: "Membre de l'équipe",
+        img: gabrielImg,
+        specialty: "Cadre & Lumière",
+    },
+    {
+        name: "Leona",
+        role: "Membre de l'équipe",
+        img: leonaImg,
+        specialty: "Jeu & Mise en scène",
+    },
+    {
+        name: "Thomas",
+        role: "Membre de l'équipe",
+        img: thomasImg,
+        specialty: "Régie & Plateau",
+    },
+    {
+        name: "Zamuel",
+        role: "Membre de l'équipe",
+        img: zamImg,
+        specialty: "Production & Cadre",
+    },
 ];
 ---
 
-<div class="overflow-x-clip bg-primary text-primary-content mt-2 md:mt-4 p-2 rounded-box min-h-86 md:min-h-70 pb-20">
-  <h2 class="text-4xl font-bold text-center py-2">Nos membres</h2>
-  <p class="mb-6 text-center">
-    LaPerche ne serait rien sans ses membres exceptionnels !
-    <br />
-    Voici un petit appercu de notre équipe de choc :</p>
-  <div class="flex whitespace-nowrap animate-scroll">
-    {/* First set of images */}
-    <div class="flex gap-8 items-center px-4">
-      {memberData.map((member) => (
-        <div class="tooltip tooltip-bottom">
-          <div class="tooltip-content flex flex-col items-center">
-            <h6 class="font-bold text-lg px-2 pt-1">{member.name}</h6>
-            <span class="text-sm italic px-2 pb-2">{member.role}</span>
-          </div>
-          <div class="w-32 h-32 flex-shrink-0 bg-secondary rounded-full">
-            <Image 
-              src={member.img} 
-              alt={member.name} 
-              height={128}
-              class="w-full h-full p-4 object-contain"
+<section id="team" class="scroll-mt-24">
+    <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary text-secondary-content text-xs font-bold uppercase tracking-wider border border-secondary-content/15">
+            <Icon
+                name="iconmind:users-outline-thin"
+                class="w-4 h-4 text-accent"
             />
-          </div>
+            <span>L'Équipe</span>
         </div>
-      ))}
+
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-accent">
+            Les membres du collectif
+        </h2>
+
+        <p class="text-base-content/85 text-base md:text-lg leading-relaxed">
+            Du scénario au mixage sonore, chaque membre apporte sa vision et son
+            énergie à nos projets audiovisuels.
+        </p>
     </div>
-    
-    {/* Duplicate set for seamless looping */}
-    <div class="flex gap-8 items-center px-4" aria-hidden="true">
-      {memberData.map((member) => (
-        <div class="tooltip tooltip-bottom">
-          <div class="tooltip-content flex flex-col items-center">
-            <h6 class="font-bold text-lg px-2 pt-1">{member.name}</h6>
-            <span class="text-sm italic px-2 pb-2">{member.role}</span>
-          </div>
-          <div class="w-32 h-32 flex-shrink-0 bg-secondary rounded-full">
-            <Image 
-              src={member.img} 
-              alt={member.name} 
-              class="w-full h-full p-4 object-contain"
+
+    <!-- Carousel container with soft gradient mask on edges -->
+    <div class="relative overflow-hidden py-4 -mx-3 sm:mx-0">
+        <div class="flex whitespace-nowrap animate-scroll hover:pause-scroll gap-6">
+            <!-- First set of members -->
+            <div class="flex gap-6 items-center">
+                {memberData.map((member) => (
+                    <div class="card-cinematic bg-base-200 p-5 rounded-2xl flex flex-col items-center text-center w-52 sm:w-56 flex-shrink-0 transition-transform duration-300 hover:scale-105 border border-base-300">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-secondary p-2.5 mb-3 flex items-center justify-center overflow-hidden border border-secondary-content/10">
+                            <Image
+                                src={member.img}
+                                alt={`Photo de profil de ${member.name}`}
+                                height={120}
+                                class="w-full h-full object-contain"
+                            />
+                        </div>
+                        <h3 class="font-bold text-base text-accent mb-0.5 truncate w-full">
+                            {member.name}
+                        </h3>
+                        <span class="text-xs font-semibold text-secondary-content bg-secondary px-2.5 py-0.5 rounded-full mb-1 truncate max-w-full">
+                            {member.role}
+                        </span>
+                        <span class="text-[11px] text-base-content/60 truncate max-w-full">
+                            {member.specialty}
+                        </span>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Duplicate set for infinite looping -->
+            <div class="flex gap-6 items-center" aria-hidden="true">
+                {memberData.map((member) => (
+                    <div class="card-cinematic bg-base-200 p-5 rounded-2xl flex flex-col items-center text-center w-52 sm:w-56 flex-shrink-0 transition-transform duration-300 hover:scale-105 border border-base-300">
+                        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-secondary/30 p-2.5 mb-3 flex items-center justify-center overflow-hidden border border-secondary-content/10">
+                            <Image
+                                src={member.img}
+                                alt={`Photo de profil de ${member.name}`}
+                                height={120}
+                                class="w-full h-full object-contain"
+                            />
+                        </div>
+                        <h3 class="font-bold text-base text-accent mb-0.5 truncate w-full">
+                            {member.name}
+                        </h3>
+                        <span class="text-xs font-semibold text-secondary-content bg-secondary/30 px-2.5 py-0.5 rounded-full mb-1 truncate max-w-full">
+                            {member.role}
+                        </span>
+                        <span class="text-[11px] text-base-content/60 truncate max-w-full">
+                            {member.specialty}
+                        </span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    <!-- Join team CTA banner -->
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl bg-base-200 border border-base-300">
+        <div class="text-center sm:text-left">
+            <h4 class="font-bold text-lg text-accent">
+                Envie de tourner avec nous ?
+            </h4>
+            <p class="text-xs sm:text-sm text-base-content/75">
+                Nous recrutons de nouveaux profils : cadreurs, acteurs,
+                scriptes, compositeurs...
+            </p>
+        </div>
+        <a
+            href="/join"
+            class="btn btn-md bg-accent text-accent-content hover:bg-accent/90 border-0 flex items-center gap-2 flex-shrink-0 font-bold"
+        >
+            <Icon
+                name="iconmind:user-add-outline-thin"
+                class="w-5 h-5 text-secondary"
             />
-          </div>
-        </div>
-      ))}
+            <span>Postuler pour un projet</span>
+        </a>
     </div>
-  </div>
-</div>
+</section>
 
 <style>
-  .tooltip {
-    --tooltip-color: var(--color-secondary);
-    --tooltip-text-color: var(--color-secondary-content);
-  }
-  
-  .animate-scroll {
-    animation: scroll 30s linear infinite;
-    width: max-content;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
+    .animate-scroll {
+        animation: scroll 35s linear infinite;
+        width: max-content;
     }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
 
-  /* Optional: Pause on hover 
-  .animate-scroll:hover {
-    animation-play-state: paused;
-  }
-  */
+    .hover\:pause-scroll:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
 </style>

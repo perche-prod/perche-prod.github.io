@@ -1,27 +1,46 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
-import uh from '../assets/emotions/Funa_nerd.png';
+import uh from "../assets/emotions/Funa_nerd.png";
 ---
 
 <Layout title="La Perche - Page non trouvée">
-    <div class="hero bg-primary text-primary-content mt-2 md:mt-4 p-2 rounded-box h-full">
-        <div class="hero-content flex-col text-center w-full">
-            <Image src={uh} alt="Uh oh!" height={128} />
-            <h1 class="text-5xl font-bold">Page non trouvée</h1>
-            <p class="py-6 text-lg">
-                La page que vous recherchez n'existe pas.
+    <div class="my-auto py-16 flex flex-col items-center justify-center text-center">
+        <div class="max-w-lg mx-auto flex flex-col items-center">
+            <div class="w-32 h-32 rounded-3xl bg-secondary p-4 mb-6 flex items-center justify-center">
+                <Image
+                    src={uh}
+                    alt="Erreur 404"
+                    height={128}
+                    class="w-full h-full object-contain"
+                />
+            </div>
+
+            <span class="text-xs font-bold uppercase tracking-widest text-secondary-content bg-secondary px-3 py-1 rounded-full mb-3">
+                Erreur 404
+            </span>
+
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-accent mb-3">
+                Scène coupée au montage !
+            </h1>
+
+            <p class="text-base-content/75 text-base mb-8 max-w-sm">
+                La page que vous cherchez n'existe pas ou a été déplacée vers un
+                autre plateau de tournage.
             </p>
-            <div class="flex flex-col md:flex-row gap-4">
-                <button class="btn btn-lg btn-primary" onclick="history.back()">
-                    <Icon name="mingcute:arrow-left-fill" class="mr-2" />
-                    Revenir en arrière
-                </button>
-                <a class="btn btn-lg btn-secondary" href="/">
-                    <Icon name="mingcute:home-5-fill" class="mr-2" />
-                    Retour à l'accueil
+
+            <div class="flex flex-col sm:flex-row gap-3 w-full justify-center">
+                <a
+                    href="/"
+                    class="btn bg-accent text-accent-content hover:bg-accent/90 border-0 flex items-center justify-center gap-2 font-bold px-5"
+                >
+                    <Icon
+                        name="iconmind:home-outline-thin"
+                        class="w-5 h-5 text-secondary"
+                    />
+                    <span>Retour à l'accueil</span>
                 </a>
             </div>
         </div>

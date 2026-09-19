@@ -1,18 +1,29 @@
 ---
-import "../assets/app.css"
+import "../assets/app.css";
 import Head from "./Head.astro";
 import Navbar from "../components/Navbar.astro";
 import Drawer from "../components/Drawer.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="fr" data-theme="perche-light" class="h-full">
-    <Head title={Astro.props.title} />
-    <body class="p-2 md:p-4 min-h-full flex flex-col bg-primary text-primary-content">
+<!doctype html>
+<html lang="fr" data-theme="perche-light" class="h-full scroll-smooth">
+    <Head title={title} description={description} />
+    <body class="min-h-full flex flex-col bg-base-100 text-base-content selection:bg-secondary selection:text-secondary-content">
         <Drawer>
-            <Navbar />
-            <div class="flex flex-col gap-12">
-                <slot />
+            <div class="max-w-7xl mx-auto w-full px-3 sm:px-6 flex flex-col min-h-screen">
+                <Navbar />
+                <main class="flex-1 flex flex-col gap-16 md:gap-24 my-6">
+                    <slot />
+                </main>
+                <Footer />
             </div>
         </Drawer>
     </body>
