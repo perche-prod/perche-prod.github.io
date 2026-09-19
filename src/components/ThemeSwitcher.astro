@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    id?: string;
+    class?: string;
+}
+
+const { id = "theme_switcher", class: className = "" } = Astro.props;
+---
+
+<label
+    class={`swap swap-rotate cursor-pointer ${className}`}
+    aria-label="Toggle theme"
+>
+    <input type="checkbox" id={id} />
+    <Icon
+        name="iconmind:moon-outline-thin"
+        class="swap-on input input-bordered rounded-lg h-10 w-10 px-2 mx-2 fill-current"
+    />
+    <Icon
+        name="iconmind:sun-outline-thin"
+        class="swap-off input input-bordered rounded-lg h-10 w-10 px-2 mx-2 fill-current"
+    />
+</label>
+
+<script type="module" is:inline data-astro-rerun>
+    (function () {
+        const theme = localStorage.getItem("theme");
+        const switcher = document.getElementById("theme_switcher");
+        if (switcher && theme === "perche-dark") {
+            switcher.checked = true;
+        }
+
+        switcher?.addEventListener("change", (e) => {
+            const newTheme = e.target.checked ? "perche-dark" : "perche-light";
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+        });
+    })();
+</script>

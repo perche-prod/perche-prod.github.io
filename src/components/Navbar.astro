@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Navigation from "./Navigation.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 import logo from "../assets/laperche.png";
 ---
 
@@ -46,7 +47,8 @@ import logo from "../assets/laperche.png";
             </ul>
         </div>
 
-        <div class="navbar-end gap-2 pr-4 h-full flex items-center">
+        <div class="navbar-end pr-4 h-full flex items-center">
+            <ThemeSwitcher />
             <a
                 href="/join"
                 class="btn btn-sm md:btn-md bg-accent text-accent-content hover:bg-accent/90 border-0 flex items-center gap-2 font-bold px-4"
